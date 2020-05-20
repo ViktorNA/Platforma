@@ -1,0 +1,18 @@
+.Form {
+    width: 300px;
+}
+
+.Container {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.ImageContainer {
+    width: 300px;
+}
+
+.Image {
+    width: 100%;
+}

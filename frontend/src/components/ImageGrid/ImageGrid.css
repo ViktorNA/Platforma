@@ -1,0 +1,47 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+
+.Item {
+    height: auto;
+}
+
+.Image {
+    height: 75%;
+    display: grid;
+    align-items: center;
+}
+
+.ItemBody {
+    height: max-content;
+}
+
+.Grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    justify-items: center;
+}
+
+.UploadContainer {
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+}
+
+.Input {
+    display: none;
+}
+
+.PaginationContainer {
+    margin-top: 10px;
+}
+
+.Toast {
+    position: fixed;
+    right: 5%;
+    top: 5%;
+}
