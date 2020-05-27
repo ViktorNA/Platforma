@@ -15,7 +15,7 @@ const headers = {
 const socket = '/app/userSocket';
 
 export const connectAndSubscribe = () => {
-  const socket = new SockJS('http://localhost:8080/gs-guide-websocket');
+  const socket = new SockJS('https://stormy-waters-38982.herokuapp.com/gs-guide-websocket');
   stompClient = Stomp.over(socket);
   stompClient.debug = () => {};
   stompClient.connect(headers, function (frame) {
