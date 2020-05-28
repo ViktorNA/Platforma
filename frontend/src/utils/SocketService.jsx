@@ -3,7 +3,7 @@ import SockJS from 'sockjs-client';
 import { getToken, getUsername } from './LocalStorageService.jsx';
 import store from '../reducers/store.jsx';
 import { setDeviceAnswer } from '../actions/GlobalActions.jsx';
-import { startTest, stopTest } from '../actions/Tests.jsx';
+import { setMatrix, startTest, stopTest } from '../actions/Tests.jsx';
 
 let stompClient = null;
 
@@ -15,7 +15,9 @@ const headers = {
 const socket = '/app/userSocket';
 
 export const connectAndSubscribe = () => {
-  const socket = new SockJS('https://stormy-waters-38982.herokuapp.com/gs-guide-websocket');
+  const socket = new SockJS(
+    'https://stormy-waters-38982.herokuapp.com/gs-guide-websocket'
+  );
   stompClient = Stomp.over(socket);
   stompClient.debug = () => {};
   stompClient.connect(headers, function (frame) {
@@ -43,6 +45,7 @@ export const connectAndSubscribe = () => {
         case 'START_TEST':
           {
             store.dispatch(startTest());
+            store.dispatch(setMatrix(data.matrix));
           }
           break;
         case 'STOP_TEST': {

@@ -29,11 +29,11 @@ export const connectAndSubscribe = async callback => {
   });
 };
 
-export const startTestMock = async () => {
+export const startTestMock = async (matrix) => {
   const username = await getUsername();
   stompClient.send(
     socket,
     {},
-    JSON.stringify({socket: username, type: 'START_TEST'}),
+    JSON.stringify({socket: username, type: 'START_TEST', matrix}),
   );
 };

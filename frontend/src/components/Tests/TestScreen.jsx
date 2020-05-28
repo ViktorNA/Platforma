@@ -1,34 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import MoveBallsContainer from '../../containers/MoveBallsContainer.jsx';
 
-const TestScreen = ({ isTestStarted, setPosition }) => {
-  const [timeBeforeStart, setTimeBeforeStart] = useState(10);
+const TIME_BEFORE_START = 3;
+
+const TestScreen = ({ isTestStarted, setPosition, matrix }) => {
+  const [timeBeforeStart, setTimeBeforeStart] = useState(TIME_BEFORE_START);
   const [timerId, setTimerId] = useState(0);
   const [isBallScreen, setIsBallScreen] = useState(false);
 
-  //TODO remove mock useEffect
-  useEffect(() => {
-    setInterval(() => {
-      setPosition(Math.random() * 95 + 5, Math.random() * 95 + 5);
-    }, 2000);
-  }, []);
+  const nextPosition = (i) => {
+    setTimeout(() => {
+      const { positionX, positionY } = matrix.actions[i];
+      setPosition(positionX, positionY);
+      if (i === matrix.times.length - 1) {
+        setTimeout(() => {
+          setIsBallScreen(false);
+        }, 2000);
+      } else nextPosition(i + 1);
+    }, matrix.times[i]);
+  };
 
   useEffect(() => {
+    console.log(timeBeforeStart);
     if (timeBeforeStart === 0) {
       clearInterval(timerId);
       setIsBallScreen(true);
+      nextPosition(0);
     }
   }, [timeBeforeStart]);
 
   useEffect(() => {
-    let time = 3;
-    setTimeBeforeStart(time);
-    const tId = setInterval(() => {
-      time -= 1;
+    console.log(isTestStarted);
+    if (isTestStarted) {
+      let time = TIME_BEFORE_START;
       setTimeBeforeStart(time);
-    }, 1000);
-    clearInterval(timerId);
-    setTimerId(tId);
+      const tId = setInterval(() => {
+        time -= 1;
+        setTimeBeforeStart(time);
+      }, 1000);
+      clearInterval(timerId);
+      setTimerId(tId);
+    } else {
+      setIsBallScreen(false);
+      setTimeBeforeStart(TIME_BEFORE_START);
+    }
   }, [isTestStarted]);
 
   if (isBallScreen && isTestStarted) {

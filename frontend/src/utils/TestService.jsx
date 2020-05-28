@@ -6,7 +6,7 @@ import { getToken } from './LocalStorageService.jsx';
 const dataFull = {
   duration: 20000,
   graph: [1, 2, 2, 3, 4, 3, 2, 1, 3, 2, 3, 4, 2, 3],
-  id: 1,
+
   matrix: {
     actions: [
       {

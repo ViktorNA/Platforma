@@ -12,21 +12,13 @@ const AimTest = () => {
     const times = [];
     const actions = [];
     for (let i = 0; i < 10; i++) {
-      times.push(i * 1000 + i * 2000);
+      times.push(1000 * Math.random() + 300);
       actions.push({
         positionX: Math.random() * 90 + 10,
         positionY: Math.random() * 90 + 10,
       });
     }
-    setTimeout(() => {
-      saveTestMock({
-        matrix: {times, actions},
-        duration: 10000,
-        testType: 'RombergTest',
-        id: 1,
-      });
-    }, 10000);
-    await startTestMock();
+    await startTestMock({times, actions});
   };
   return (
     <View>

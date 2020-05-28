@@ -12,6 +12,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     isTestStarted: state.tests.isTestStarted,
+    matrix: state.tests.matrix,
   };
 };
 
