@@ -3,6 +3,7 @@ import DrawGraphView from '../containers/DrawGraphView';
 import {connect} from 'react-redux';
 import {Text} from 'react-native';
 import MainMenu from '../containers/MainMenu';
+import SignIn from '../components/Auth/SignIn';
 
 const MainRouter = ({screen}) => {
   switch (screen) {
@@ -16,6 +17,9 @@ const MainRouter = ({screen}) => {
         return <MainMenu />;
       }
       break;
+    case 'signin': {
+      return <SignIn />;
+    }
     default:
       return <Text>error</Text>;
   }
