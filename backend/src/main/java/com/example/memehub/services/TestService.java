@@ -35,15 +35,11 @@ public class TestService {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not exist");
     userEntities.add(userEntity.get());
     test.setUsers(userEntities);
-    test.getMatrix().getActions().parallelStream().forEach(action -> {
-      if(!testActionRepository.existsById(action.getId())) {
-        TestAction saved = testActionRepository.saveAndFlush(action);
-        action.setId(saved.getId());
-      }
-    });
-    Matrix savedMatrix = matrixRepository.saveAndFlush(test.getMatrix());
+    List<TestAction> savedActions = testActionRepository.saveAll(test.getMatrix().getActions());
+    test.getMatrix().setActions(savedActions);
+    Matrix savedMatrix = matrixRepository.save(test.getMatrix());
     test.setMatrix(savedMatrix);
-    return testRepository.saveAndFlush(test);
+    return testRepository.save(test);
   }
 
   public Set<TestEntity> getAll(UserPrincipal user) {

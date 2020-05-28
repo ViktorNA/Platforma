@@ -18,7 +18,7 @@ public class TestEntity {
 
   @OneToOne private Matrix matrix;
 
-  @OneToMany @JsonIgnore private List<UserEntity> users;
+  @ManyToMany @JsonIgnore private List<UserEntity> users;
 
   @ElementCollection private List<Double> graph;
 }

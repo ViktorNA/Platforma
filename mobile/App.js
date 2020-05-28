@@ -15,6 +15,7 @@ import {Provider} from 'react-redux';
 import store from './src/store/store';
 import MainRouter from './src/routes/MainRouter';
 import {addPointsMock} from './src/utils/mocks';
+import * as encoding from 'text-encoding';
 
 const App: () => React$Node = () => {
   const requestEnable = async () => {

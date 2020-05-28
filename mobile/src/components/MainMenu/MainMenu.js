@@ -22,6 +22,7 @@ const MainMenu = ({setScreen}) => {
     <>
       {isLogged && <Text>{`Signed as ${userName}`}</Text>}
       <Button title={'Monitor'} onPress={() => setScreen('monitor')} />
+      <Button title={'Aim test'} onPress={() => setScreen('aimTest')} />
       {isLogged ? (
         <Button title={'Log Out'} onPress={logOutOnPress} />
       ) : (

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {signIn} from '../../utils/authService';
 import {setScreenFunc} from '../../utils/routerService';
+import {connectAndSubscribe} from '../../utils/socketService';
 
 const SignIn = () => {
   const [login, setLogin] = useState('');
