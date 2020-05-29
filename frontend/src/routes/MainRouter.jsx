@@ -6,6 +6,7 @@ import SignUp from '../components/Authentication/SignUp.jsx';
 import ImageCard from '../components/ImageCard/ImageCard.jsx';
 import NavBar from '../components/NavBar/NavBar.jsx';
 import TestScreenContainer from '../containers/TestScreenContainer.jsx';
+import DataView from '../components/DataView/DataView.js';
 
 const MainRouter = () => {
   return (
@@ -21,14 +22,8 @@ const MainRouter = () => {
         <Route path={'/signUp'} exact>
           <SignUp />
         </Route>
-        <Route path={'/image/:imageId'} exact>
-          <ImageCard />
-        </Route>
-        <Route path={'/images/:pageNumber'} exact>
-          <ImageGrid />
-        </Route>
-        <Route path={'/images'}>
-          <ImageGrid />
+        <Route path={'/database'} exact>
+          <DataView />
         </Route>
       </Switch>
     </Router>

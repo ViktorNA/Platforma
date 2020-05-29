@@ -19,6 +19,11 @@ const AdminMenu = () => {
   const sendViaGet = () => {
     instance.get('socketGet');
   };
+
+  const getTestsAM = async () => {
+    const res = await getTests();
+    console.log(res);
+  };
   return (
     <div>
       <button onClick={connectAndSubscribe}>Connect and sub</button>
@@ -31,7 +36,7 @@ const AdminMenu = () => {
       <button onClick={stopTestMock}>Stop test</button>
       <button onClick={saveTestMock}>Save test</button>
       <button onClick={saveFullTestMock}>Save full test</button>
-      <button onClick={getTests}>Get test</button>
+      <button onClick={getTestsAM}>Get test</button>
     </div>
   );
 };

@@ -45,7 +45,7 @@ const SignUp = () => {
     setIsLoading(true);
     const res = await signUp(username, email, name, password);
     if (res.status === 200) {
-      history.push('/images');
+      history.push('/test');
     } else {
       setErrorMessage(res.message);
       setIsError(true);

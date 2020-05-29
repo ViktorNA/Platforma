@@ -3,6 +3,26 @@ import axios from 'axios';
 import { BASE_URL } from './Constants.jsx';
 import { getToken } from './LocalStorageService.jsx';
 
+export const saveTestMock = () => {
+  axios.post(`${BASE_URL}tests`, data, {
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
+};
+export const saveFullTestMock = () => {
+  axios.post(`${BASE_URL}tests`, dataFull, {
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
+};
+export const getTests = async () => {
+  return await instance.get('tests');
+};
+
 const dataFull = {
   duration: 20000,
   graph: [1, 2, 2, 3, 4, 3, 2, 1, 3, 2, 3, 4, 2, 3],
@@ -48,24 +68,4 @@ const data = {
     times: [5000, 3000, 1000],
   },
   testType: 'RombergTest',
-};
-
-export const saveTestMock = () => {
-  axios.post(`${BASE_URL}tests`, data, {
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-      Authorization: `Bearer ${getToken()}`,
-    },
-  });
-};
-export const saveFullTestMock = () => {
-  axios.post(`${BASE_URL}tests`, dataFull, {
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-      Authorization: `Bearer ${getToken()}`,
-    },
-  });
-};
-export const getTests = () => {
-  instance.get('tests');
 };

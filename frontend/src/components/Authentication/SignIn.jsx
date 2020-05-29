@@ -33,12 +33,14 @@ const SignIn = () => {
     if (!!password && !!usernameOrEmail) {
       const res = await signIn(usernameOrEmail, password);
       if (res.status === 200) {
-        history.push('/images');
+        setIsLoading(false);
+        history.push('/test');
+        window.location.reload();
       } else {
+        setIsLoading(false);
         setIsError(true);
       }
     }
-    setIsLoading(false);
   };
 
   return (
